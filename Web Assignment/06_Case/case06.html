@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../assets/lib/normalize.css">
     <link rel="stylesheet" href="https://www.hxstrive.com/cdn/libs/font-awesome/7.0.1/css/all.min.css">
     <style>
-        main{
+        main {
             width: 100vw;
             height: 100vh;
             background-image: url("../assets/Car_Animation_Img/sky.jpg");
@@ -29,7 +29,7 @@
             height: 100%;
             display: flex;
             flex-direction: row;
-            animation: frameAnimation 6000ms ease-in-out infinite;
+            animation: frameAnimation 6000ms linear infinite;
             overflow: hidden;
         }
 
@@ -38,10 +38,10 @@
             width: 100vw;
         }
 
-        .city{
+        .city {
             position: absolute;
             width: 100%;
-            height: Calc(100vh / 3);
+            height: calc(100vh / 3);
             background-image: url("../assets/Car_Animation_Img/city.png");
             background-position: center;
             background-repeat: no-repeat;
@@ -49,9 +49,9 @@
             bottom: 33vh;
         }
 
-        .road{
+        .road {
             width: 100%;
-            height: Calc(100vh / 3);
+            height: calc(100vh / 3);
             background-image: url("../assets/Car_Animation_Img/road.jpg");
             background-position: center;
             background-repeat: no-repeat;
@@ -60,45 +60,53 @@
             bottom: 0;
         }
 
-        main > img {
+        /* Car + Wheels container */
+        #carContainer {
             position: absolute;
             bottom: 140px;
             left: 40vw;
-            width: Calc(100vh / 2);
+            width: calc(100vh / 2);
         }
 
-        .wheels{
-            width: 75px;
+        #carBody {
+            width: 100%;
+            display: block;
+        }
+
+        .wheels {
+            width: 18%;                 /* relative to car width – looks better */
             position: absolute;
-            animation: wheelAnimation 6000ms ease-in-out infinite;
+            bottom: 8%;                 /* adjust this if needed */
+            animation: wheelAnimation 600ms linear infinite;
         }
 
-        #wheel1{
-            left: 56.5vw;
+        #wheel1 {                       /* Front wheel */
+            left: 70%;
+            bottom: 5%;
         }
 
-        #wheel2{
-            left: 42vw;
+        #wheel2 {                       /* Rear wheel */
+            left: 8.5%;
+            bottom: 5%;
         }
 
         @keyframes frameAnimation {
-            0%{
+            0% {
                 transform: translateX(0);
             }
-            100%{
+            100% {
                 transform: translateX(-200vw);
             }
         }
 
         @keyframes wheelAnimation {
-            0%{
-                transform: rotate(0);
+            0% {
+                transform: rotate(0deg);
             }
-            100%{
-                transform: rotate(3000deg);
+            100% {
+                transform: rotate(360deg);
             }
         }
-
     </style>
 </head>
 <body>
@@ -117,9 +125,13 @@
             <section class="road"></section>
         </section>
     </section>
-    <img id="carBody" src="../assets/Car_Animation_Img/car.png" alt="car">
-    <img id="wheel1" class="wheels" src="../assets/Car_Animation_Img/wheel.png" alt="wheel">
-    <img id="wheel2" class="wheels" src="../assets/Car_Animation_Img/wheel.png" alt="wheel">
+
+    <!-- Car + Wheels together -->
+    <div id="carContainer">
+        <img id="carBody" src="../assets/Car_Animation_Img/car.png" alt="car">
+        <img id="wheel1" class="wheels" src="../assets/Car_Animation_Img/wheel.png" alt="wheel">
+        <img id="wheel2" class="wheels" src="../assets/Car_Animation_Img/wheel.png" alt="wheel">
+    </div>
 </main>
 </body>
 </html>
